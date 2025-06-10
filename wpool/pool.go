@@ -37,10 +37,10 @@ func NewWorkerPool(wCount int) *WorkerPool {
 func (wp *WorkerPool) Close() {
 	log.Println("Начался процеес закрытия пула воркеров...")
 
-	// Закрываю канал задач
+	// Закрытие канала задач
 	close(wp.jobs)
 
-	// Останавливаю всех воркеров
+	// Останока всех воркеров
 	wp.mu.Lock()
 	for _, worker := range wp.workers {
 		worker.Stop()
